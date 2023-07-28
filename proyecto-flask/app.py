@@ -3,11 +3,22 @@ import requests
 import json
 from config import usuario, clave
 
-app = Flask(_name_, template_folder='templates')
+app = Flask(__name__, template_folder='templates')
 
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+
+@app.route("/barrios")
+def los_barrios():
+    """
+    """
+    r = requests.get("http://127.0.0.1:8000/api/barrios/",
+            auth=(usuario, clave))
+    datos = json.loads(r.content)['results']
+    numero = json.loads(r.content)['count']
+    return render_template("barrio.html", datos=datos,
+    numero=numero)
 
 
 @app.route("/personas")
@@ -18,20 +29,9 @@ def las_personas():
             auth=(usuario, clave))
     datos = json.loads(r.content)['results']
     numero = json.loads(r.content)['count']
-    return render_template("laspersonas.html", datos=datos,
-    numeor=numero)
-
-
-@app.route("/barrios")
-def los_barrios():
-    """
-    """
-    r = requests.get("http://127.0.0.1:8000/api/barrios/",
-            auth=(usuario, clave))
-    datos = json.loads(r.content)['results']
-    numero = json.loads(r.content)['count']
-    return render_template("losbarrios.html", datos=datos,
+    return render_template("persona.html", datos=datos,
     numero=numero)
+
 
 @app.route("/localComida")
 def los_losLocalesComida():
@@ -41,7 +41,7 @@ def los_losLocalesComida():
             auth=(usuario, clave))
     datos = json.loads(r.content)['results']
     numero = json.loads(r.content)['count']
-    return render_template("localesComida.html", datos=datos,
+    return render_template("localComida.html", datos=datos,
     numero=numero)
 
 @app.route("/localRepuestos")
@@ -52,5 +52,6 @@ def los_losLocalesRepuestos():
             auth=(usuario, clave))
     datos = json.loads(r.content)['results']
     numero = json.loads(r.content)['count']
-    return render_template("localesRepuestos.html", datos=datos,
+    return render_template("localRepuestos.html", datos=datos,
     numero=numero)
+

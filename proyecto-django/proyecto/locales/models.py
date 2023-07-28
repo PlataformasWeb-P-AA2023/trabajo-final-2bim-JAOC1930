@@ -22,7 +22,6 @@ class LocalComida(models.Model):
     barrio = models.ForeignKey(Barrio, on_delete=models.CASCADE, related_name='barrio_Comida')
     tipo_comida = models.CharField(max_length=30)
     ventas_proyectadas_mes = models.FloatField()
-    pago_permiso = models.FloatField()
 
     def obtenerVentas(self):
         var = self.ventas_proyectadas_mes
@@ -41,9 +40,8 @@ class LocalRepuestos(models.Model):
     direccion = models.CharField(max_length=30)
     barrio = models.ForeignKey(Barrio, on_delete=models.CASCADE)
     valor_total_mercaderia = models.FloatField()
-    valor_pago_permiso = models.FloatField()
 
-    def obtenerVentas():
+    def obtenerVentas2(self):
         var = self.valor_total_mercaderia
         valorTotal = var * 0.001
         return valorTotal

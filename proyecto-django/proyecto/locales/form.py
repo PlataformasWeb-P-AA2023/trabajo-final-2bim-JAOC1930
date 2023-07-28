@@ -14,10 +14,10 @@ class PersonaForm(forms.ModelForm):
 class LocalComidaForm(forms.ModelForm):
     class Meta:
         model = LocalComida
-        fields = ['propietario', 'direccion', 'barrio', 'tipo_comida', 'ventas_proyectadas_mes', 'pago_permiso']
+        fields = ['propietario', 'direccion', 'barrio', 'tipo_comida', 'ventas_proyectadas_mes']
 
 class LocalRespuestosForm(forms.ModelForm):
     class Meta:
         model = LocalRepuestos
-        fields = ['propietario', 'direccion', 'barrio', 'valor_total_mercaderia', 'valor_pago_permiso']
+        fields = ['propietario', 'direccion', 'barrio', 'valor_total_mercaderia']
 

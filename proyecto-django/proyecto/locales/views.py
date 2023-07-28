@@ -15,6 +15,16 @@ def index(request):
 
 ##################################################################################
 
+def index2(request):
+    barrio = Barrio.objects.all()
+    persona = Persona.objects.all()
+    localComida = LocalComida.objects.all()
+    localRepuestos = LocalRepuestos.objects.all()
+    num_localRespuestos = len(localRepuestos)
+    diccionario = {'num_locaRespuestos': num_localRespuestos, 'localRespuestos': localRepuestos}
+    return render(request, 'index2.html', diccionario)
+
+##################################################################################
 
 def crear_Barrio(request):
     if request.method=='POST':
@@ -124,7 +134,7 @@ def crear_LocalRespuestos(request):
         print(formulario.errors)
         if formulario.is_valid():
             formulario.save() 
-            return redirect(index)
+            return redirect(index2)
     else:
         formulario = LocalRespuestosForm()
     diccionario = {'formulario': formulario}
@@ -138,7 +148,7 @@ def editar_LocalRespuestos(request, id):
         print(formulario.errors)
         if formulario.is_valid():
             formulario.save()
-            return redirect(index)
+            return redirect(index2)
     else:
         formulario = LocalRespuestosForm(instance=localRespuestos)
     diccionario = {'formulario': formulario}
@@ -148,7 +158,7 @@ def editar_LocalRespuestos(request, id):
 def eliminar_LocalRespuestos(request, id):
     localRespuestos = LocalRepuestos.objects.get(pk=id)
     localRespuestos.delete()
-    return redirect(index)
+    return redirect(index2)
 
 ########################################################################33
 
