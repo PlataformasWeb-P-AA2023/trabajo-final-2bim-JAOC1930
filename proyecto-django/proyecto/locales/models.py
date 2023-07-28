@@ -24,10 +24,17 @@ class LocalComida(models.Model):
     ventas_proyectadas_mes = models.FloatField()
     pago_permiso = models.FloatField()
 
+    def obtenerVentas(self):
+        var = self.ventas_proyectadas_mes
+        valorTotal = var * 0.8
+        return valorTotal
+
+
     def __str__(self):
             return "%s %s %s %s %.2f %.2f" % (self.propietario,
                     self.direccion, self.barrio, self.tipo_comida, 
                     self.ventas_proyectadas_mes, self.pago_permiso)
+                    
 
 class LocalRepuestos(models.Model):
     propietario = models.ForeignKey(Persona, on_delete=models.CASCADE)
@@ -35,6 +42,11 @@ class LocalRepuestos(models.Model):
     barrio = models.ForeignKey(Barrio, on_delete=models.CASCADE)
     valor_total_mercaderia = models.FloatField()
     valor_pago_permiso = models.FloatField()
+
+    def obtenerVentas():
+        var = self.valor_total_mercaderia
+        valorTotal = var * 0.001
+        return valorTotal
 
     def __str__(self):
             return "%s %s %s %.2f %.2f" % (self.propietario,

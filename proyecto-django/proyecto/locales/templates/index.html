@@ -23,12 +23,12 @@
 
   {% for l in localComida %}
   <tr>
-    <td> {{l.propietario.nombre}}</td>
-    <td> {{l.tipo_comida}}</td>
-    <td> {{l.ventas_proyectadas_mes}}</td>
-    <td>  {{l.direccion}}</td>
-    <td>  {{l.barrio.nombre}}</td>
-    
+    <td>{{l.propietario.nombre}}</td>
+    <td>{{l.tipo_comida}}</td>
+    <td>{{l.ventas_proyectadas_mes}}</td>
+    <td>{{l.direccion}}</td>
+    <td>{{l.barrio.nombre}}</td>
+    <td>{{l.obtenerVentas}}</td>
     <td> <a href="{% url 'editar_LocalComida' l.id %}">editar</a> <br>
       <a href="{% url 'eliminar_LocalComida' l.id %}"
       onclick="return confirm('¿Está seguro de la eliminación?')" >
