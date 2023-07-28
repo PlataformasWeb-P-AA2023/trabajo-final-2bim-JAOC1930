@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from locales import views
 from rest_framework import routers
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 router = routers.DefaultRouter()
 
 router.register(r'barrios', views.BarrioViewSet)
@@ -31,4 +31,6 @@ urlpatterns = [
     path('', include('locales.urls')),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
 ]
+urlpatterns += staticfiles_urlpatterns()
